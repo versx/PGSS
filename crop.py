@@ -19,6 +19,8 @@ async def crop_task():
     LOG.info('Crop screenshot task started')
     LOG.info('Screenshot path:{}'.format(screenshot_path))
     while True:
+        for fullpath_filename in screenshot_path.glob('*.jpg'):
+            os.remove(fullpath_filename)
         for fullpath_filename in screenshot_path.glob('*.png'):
             filename = os.path.basename(fullpath_filename)
             filename, ext = os.path.splitext(filename)
