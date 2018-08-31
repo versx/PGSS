@@ -822,11 +822,12 @@ class RaidNearby:
             type=type_)
         payload = json.loads(payload_raw)
 
-        response = requests.post(
-            self.config.WEBHOOK, data=json.dumps(payload),
-            headers={'Content-Type': 'application/json'}
-        )
-        LOG.info('Webhook is send.')
+        for wh in self.config.WEBHOOK:
+            response = requests.post(
+                self.config.WEBHOOK, data=json.dumps(payload),
+                headers={'Content-Type': 'application/json'}
+            )
+            LOG.info('Webhook {} is send.'.format(wh))
 
     def main(self, raidscan, id):
         try:
