@@ -824,7 +824,7 @@ class RaidNearby:
 
         for wh in self.config.WEBHOOK:
             response = requests.post(
-                self.config.WEBHOOK, data=json.dumps(payload),
+                wh, data=json.dumps(payload),
                 headers={'Content-Type': 'application/json'}
             )
             LOG.info('Webhook {} is send.'.format(wh))
