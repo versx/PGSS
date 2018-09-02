@@ -822,7 +822,15 @@ class RaidNearby:
             type=type_)
         payload = json.loads(payload_raw)
 
-        for wh in self.config.WEBHOOK:
+        if hasattr(self.config, 'WEBHOOK'):
+            webhooks = [self.config.WEBHOOK]
+
+        if isinstance(self.config.WEBHOOKS, str):
+            webhooks = [self.config.WEBHOOKS]
+        else:
+            webhooks = self.config.WEBHOOKS
+
+        for wh in webhooks:
             response = requests.post(
                 wh, data=json.dumps(payload),
                 headers={'Content-Type': 'application/json'}
