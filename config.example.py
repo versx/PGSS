@@ -69,7 +69,7 @@ MAP_END = (0,0)
 
 # Webhook
 SEND_WEBHOOK = False
-WEBHOOK = ['http://yourweb.hook', 'http://secondweb.hook']
+WEBHOOKS = ['http://yourweb.hook', 'http://secondweb.hook']
 
 # !!! non replacement '{' must be escaped by a second one infront of it !!!
 WH_PAYLOAD = """
